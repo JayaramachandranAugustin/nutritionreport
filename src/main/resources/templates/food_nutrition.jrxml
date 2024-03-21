@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="food_nutrition" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5453f82f-03fa-4a11-93c0-20b94caca201">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <subDataset name="foodDataset" uuid="ac1e6af3-3d8b-42d6-8965-56cec33e9ff3">
+        <queryString>
+            <![CDATA[]]>
+        </queryString>
+        <field name="foodName" class="java.lang.String"/>
+        <field name="mealtime" class="java.lang.String"/>
+        <field name="fat" class="java.lang.Integer"/>
+        <field name="protein" class="java.lang.Integer"/>
+        <field name="carbohydrate" class="java.lang.Integer"/>
+        <variable name="total_fat" class="java.lang.Integer" calculation="Sum">
+            <variableExpression><![CDATA[$F{fat}*9]]></variableExpression>
+        </variable>
+        <variable name="total_protien" class="java.lang.Integer" calculation="Sum">
+            <variableExpression><![CDATA[$F{protein}*4]]></variableExpression>
+        </variable>
+        <variable name="total_carbs" class="java.lang.Integer">
+            <variableExpression><![CDATA[$F{carbohydrate}*4]]></variableExpression>
+        </variable>
+        <variable name="day_calorie" class="java.lang.Integer" calculation="Sum">
+            <variableExpression><![CDATA[($F{fat}*9)+($F{protein}*4)+($F{carbohydrate}*4)]]></variableExpression>
+        </variable>
+    </subDataset>
+    <parameter name="foodDataset" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="304" splitType="Stretch">
+            <componentElement>
+                <reportElement x="50" y="20" width="200" height="200" uuid="bf79bcf4-0e3b-42d1-b54a-12dab4226f2c">
+                    <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+                    <property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+                    <property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+                    <property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                    <datasetRun subDataset="foodDataset" uuid="9fa3ba55-4bb2-447e-b90c-d1af2173371e">
+                        <dataSourceExpression><![CDATA[$P{foodDataset}]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="80" uuid="05d059bb-81d6-4126-98c5-15bca0fc06e1">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+                        <jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="80" height="30" uuid="fc23467c-9419-40a6-9373-96790d5c6adf"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Food Name]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="80" height="30" uuid="5beb4a4d-1236-4147-8c5f-afdee86f4857"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{foodName}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="60" uuid="9633da9b-04da-4d41-a931-007a23d9c8e0">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+                        <jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="60" height="30" uuid="054f1466-2ce6-4424-990d-341823b4e3b0"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Meal Time]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="60" height="30" uuid="7b97f6a1-318e-4c8f-b57f-5c3febf5cde4"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Calories]]></text>
+                            </staticText>
+                        </jr:columnFooter>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="60" height="30" uuid="5e7d5aa6-a665-4496-b0d7-c8dbe0246149"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{mealtime}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="40" uuid="9301b60e-6aeb-4f8c-adc9-836c89963104">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+                        <jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="40" height="30" uuid="1b7fe49f-2ca0-49f5-b233-41c605a89ddd"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Fat]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table_CH" height="30" rowSpan="1">
+                            <textField>
+                                <reportElement x="0" y="0" width="40" height="30" uuid="a1487298-0a51-413b-b30a-0cbfe06fb59e"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$V{total_fat}]]></textFieldExpression>
+                            </textField>
+                        </jr:columnFooter>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="40" height="30" uuid="d4872ded-48da-4505-abf5-a60ab6e15039"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{fat}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="40" uuid="d88dcdae-5374-4b2d-9dc5-b7d9b921e12b">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+                        <jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="40" height="30" uuid="91bbe589-a727-459a-beb5-8d930cf924a0"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Protein]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table_CH" height="30" rowSpan="1">
+                            <textField>
+                                <reportElement x="0" y="0" width="40" height="30" uuid="ea7b8099-a78c-4891-9153-c64aea1eb5be"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$V{total_protien}]]></textFieldExpression>
+                            </textField>
+                        </jr:columnFooter>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="40" height="30" uuid="c565dc9f-0fdd-4b07-b493-b65f0f43aab7"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{protein}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="9f276560-2c09-4580-b423-6316c4332f32">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+                        <jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="30" uuid="4f356ec9-3296-40f4-8084-f6dd07265dfd"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Carbohydrate]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table_CH" height="30" rowSpan="1">
+                            <textField>
+                                <reportElement x="0" y="0" width="90" height="30" uuid="7f519072-8928-4e1e-8e1a-7895322363df"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$V{total_carbs}]]></textFieldExpression>
+                            </textField>
+                        </jr:columnFooter>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="90" height="30" uuid="1bebc9fd-622b-410c-b7bc-27726bf2c16c"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{carbohydrate}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="50" uuid="545b409c-d08f-4acd-b662-4065c164755e">
+                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+                        <jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+                            <staticText>
+                                <reportElement x="0" y="0" width="50" height="30" uuid="f0ae1f05-9f19-4792-9f4f-a031ce8bb225"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <text><![CDATA[Total Calories]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table_CH" height="30" rowSpan="1">
+                            <textField>
+                                <reportElement x="0" y="0" width="50" height="30" uuid="d79b0fd3-36cc-4775-b9c5-bd513bc3b9b6"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$V{day_calorie}]]></textFieldExpression>
+                            </textField>
+                        </jr:columnFooter>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="50" height="30" uuid="f3d70250-f15b-4691-ac6f-c93ab8331bbd"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[($F{fat}*9)+($F{protein}*4)+($F{carbohydrate}*4)]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+        </band>
+    </detail>
+</jasperReport>
